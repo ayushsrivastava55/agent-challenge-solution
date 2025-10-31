@@ -1,0 +1,19 @@
+{
+  "version": "0.1",
+  "type": "container",
+  "meta": { "trigger": "cli" },
+  "ops": [
+    {
+      "type": "container/run",
+      "id": "ollama",
+      "args": {
+        "cmd": [
+          "-c 'curl -s https://raw.githubusercontent.com/KeesGeerligs/nosana/main/benchmarking/images/command.sh -o /tmp/command.sh && chmod +x /tmp/command.sh && /tmp/command.sh'"
+        ],
+        "image": "docker.io/nosana/ollama-7b:0.0.1",
+        "gpu": true,
+        "expose": 11434
+      }
+    }
+  ]
+}

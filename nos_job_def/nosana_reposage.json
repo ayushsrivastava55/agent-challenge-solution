@@ -1,0 +1,32 @@
+{
+  "version": "0.1",
+  "type": "container",
+  "meta": {
+    "trigger": "cli",
+    "name": "RepoSage AI Agent",
+    "description": "AI-powered GitHub auto-fix agent that detects issues and creates PRs with fixes"
+  },
+  "ops": [
+    {
+      "type": "container/run",
+      "id": "reposage-agent",
+      "args": {
+        "cmd": [],
+        "image": "yourusername/reposage:latest",
+        "gpu": false,
+        "env": {
+          "NODE_ENV": "production",
+          "GITHUB_TOKEN": "your_github_personal_access_token_here",
+          "OLLAMA_API_URL": "https://3yt39qx97wc9hqwwmylrphi4jsxrngjzxnjakkybnxbw.node.k8s.prd.nos.ci/api",
+          "MODEL_NAME_AT_ENDPOINT": "qwen3:8b",
+          "DISABLE_TELEMETRY": "true",
+          "POSTHOG_DISABLED": "true",
+          "MASTRA_TELEMETRY_DISABLED": "true",
+          "DO_NOT_TRACK": "1"
+        },
+        "expose": [3000, 4111],
+        "work_dir": "/app"
+      }
+    }
+  ]
+}

@@ -12,7 +12,7 @@
     "start:agent": "mastra start",
     "lint": "next lint",
     "build": "mastra build && next build",
-    "start": "concurrently \"npm:start:agent\" \"npm:start:ui\""
+    "start": "concurrently \"npm run start:agent\" \"npm run start:ui\""
   },
   "dependencies": {
     "@ag-ui/mastra": "0.1.0",
@@ -27,6 +27,7 @@
     "@mastra/libsql": "0.15.0",
     "@mastra/mcp": "^0.13.4",
     "@mastra/memory": "0.15.4",
+    "@octokit/rest": "^22.0.0",
     "dotenv": "^17.2.3",
     "libsql": "^0.5.22",
     "mastra": "0.13.4",
@@ -34,6 +35,7 @@
     "ollama-ai-provider-v2": "^1.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "simple-git": "^3.29.0",
     "zod": "^3.25.0"
   },
   "devDependencies": {

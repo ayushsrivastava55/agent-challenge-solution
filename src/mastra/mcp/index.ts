@@ -1,13 +1,24 @@
 import { MCPServer } from "@mastra/mcp"
-import { weatherTool } from "../tools";
-import { weatherAgent } from "../agents";
+import { 
+  analyzeRepoTool,
+  createPRTool,
+  searchGitHubIssues,
+  runTestsTool,
+  analyzeCodeQuality,
+  generateFixTool
+} from "../tools";
+import { repoSageAgent } from "../agents";
 
 export const server = new MCPServer({
-  name: "My Custom Server",
+  name: "RepoSage Server",
   version: "1.0.0",
-  tools: { weatherTool },
-  agents: { weatherAgent }, // this agent will become tool "ask_weatherAgent"
-  // workflows: {
-  // dataProcessingWorkflow, // this workflow will become tool "run_dataProcessingWorkflow"
-  // }
+  tools: { 
+    analyzeRepoTool,
+    createPRTool,
+    searchGitHubIssues,
+    runTestsTool,
+    analyzeCodeQuality,
+    generateFixTool
+  },
+  agents: { repoSageAgent }, // this agent will become tool "ask_repoSageAgent"
 });

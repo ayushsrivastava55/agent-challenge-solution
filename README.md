@@ -158,6 +158,55 @@ Record a 1-3 minute video demonstrating:
 - Key features and functionality
 - The frontend interface in action
 - Real-world use case demonstration
+
+## 🤖 Agents & Tools Catalog
+
+This starter already ships with a fully wired RepoSage agent plus an extensive toolbelt for automating GitHub repository maintenance. Use this section as a quick reference while hacking on new workflows.
+
+### RepoSage Agent
+
+- **Name:** `RepoSage`
+- **Model:** OpenAI Chat (defaults to `gpt-4o-mini`)
+- **State:** Structured working memory (tracked via Zod schema)
+- **Mission:** Detect, triage, and resolve repository issues end-to-end—covering analysis, remediation, pull-request workflows, and CI follow-up.
+
+### Tooling Overview
+
+**Repository Inspection & Quality**
+- `analyze-repo` – Clone + inspect a repo for failing tests, lint/type problems, and summarize the latest commit.
+- `run-tests` – Execute a repo’s test command and capture structured pass/fail output.
+- `analyze-code-quality` – Provide a lint-style report with severity-tagged issues and suggestions.
+- `generate-fix` – Propose an AI-generated patch for a described issue and code context.
+- `check-dependencies` – Report outdated packages and npm audit findings.
+- `format-code` – Run Prettier against the repository clone.
+- `fix-lint-errors` – Attempt automatic ESLint fixes.
+
+**File & Repo Navigation**
+- `read-file` – Fetch a file’s contents from GitHub, following branch fallbacks.
+- `list-repo-files` – List directory contents for a given path/branch.
+- `find-file` – Use GitHub code search to locate files by name or query.
+
+**Pull Request Operations**
+- `create-pr` – Materialize a PR with supplied diff, title, and description.
+- `ai-review-pr` – Generate a review summary and optional comment payload.
+- `ai-describe-pr` – Improve PR titles/descriptions via structured JSON output.
+- `ai-improve-pr` – Suggest inline review feedback from a diff snapshot.
+- `ai-ask-pr` – Answer questions about a PR’s context.
+- `generate-pr-labels` – Recommend/apply labels using AI with JSON response_format.
+- `update-changelog` – Draft a Markdown changelog comment based on PR commits.
+- `merge-pr` – Merge the PR using the configured strategy.
+
+**Issue Management**
+- `search-github-issues` – Surface similar GitHub issues for troubleshooting context.
+- `create-issue` – Open a new issue in the target repo.
+- `comment-on-issue` – Post discussion or status updates.
+- `close-issue` – Close an issue with optional closing comment.
+
+**CI / Workflow Automation**
+- `trigger-workflow` – Dispatch a GitHub Actions workflow run.
+- `get-workflow-status` – Summarize recent workflow runs and highlight failures.
+
+You can mix and match these tools inside new agents or extend RepoSage by updating `src/mastra/agents/index.ts`.
 - Upload to YouTube, Loom, or similar platform
 
 ### Phase 5: Documentation
@@ -303,5 +352,3 @@ Be the first to know about:
 - 🎁 Early-bird credits and partner perks
 
 Join the Nosana builder community today — and build the future of decentralized AI.
-
-

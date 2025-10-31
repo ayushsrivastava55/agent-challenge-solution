@@ -34,6 +34,12 @@ RUN pnpm build
 
 FROM node:lts AS runtime
 
+# Install runtime dependencies and Nosana CLI
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends git curl ca-certificates \
+  && rm -rf /var/lib/apt/lists/* \
+  && npm install -g @nosana/cli
+
 RUN groupadd -g 1001 appgroup && \
   useradd -u 1001 -g appgroup -m -d /app -s /bin/false appuser
 
